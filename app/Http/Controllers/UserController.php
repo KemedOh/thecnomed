@@ -34,7 +34,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'fullname' => 'required',
+            'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
             'role' => 'required',
@@ -43,10 +43,10 @@ class UserController extends Controller
         $data = $request->all();
         // dd($data);
         $check = User::create([
-            'name' => $data['name'],
+            'fullname' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role' => $data['role']
+            'role_id' => $data['role']
         ]);
 
         return redirect("dashboard")->withSuccess('Great! You have Successfully logged in');
@@ -65,22 +65,40 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::find($id);
+        $roles = Role::all();
+        return view('users.edit', compact('roles', 'user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'nullable|min:6',
+            'role' => 'required',
+
+        ]);
+
+        $user->fullname = $request->name;
+        $user->email = $request->email;
+        if (!empty ($request->password))
+            $user->password = Hash::make($request->password);
+        $user->role_id = $request->role;
+        $user->save();
+
+        return redirect()->route('users.index')->withSucces('Great! You have succesfully updated' . $user->fullname);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(user $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('users.index')->withSucces('Great! You have succesfully DELETED' . $user->fullname);
     }
 }

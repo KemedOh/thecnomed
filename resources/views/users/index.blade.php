@@ -15,7 +15,7 @@
                     <a href="{{route('users.create')}}" class="btn btn-sm btn-secondary">
                         Tambah User
                     </a>
-                    <table class="table">
+                    <table class="table table-striped" id="users">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -27,14 +27,14 @@
                         </thead>
                         <tbody>
                             <?php $no = 0; ?>
-                            {{--
+                            
                             @foreach($users as $row)
                             <?php    $no++ ?>
                             <tr>
                                 <th scope="row">{{ $no }}</th>
-                                <td>{{$row->name}}</td>
+                                <td>{{$row->fullname}}</td>
                                 <td>{{$row->email}}</td>
-                                <td>{{$row->role}}</td>
+                                <td>{{$row->role->role_name}}</td>
                                 <td>
                                     <a href="{{ route('users.edit', $row->id) }}" class="btn btn-sm btn-warning">
                                         Edit
@@ -49,7 +49,7 @@
                                     </form>
                                 </td>
                             </tr>
-                            @endforeach --}}
+                            @endforeach 
                         </tbody>
                     </table>
                 </div>
@@ -57,4 +57,7 @@
         </div>
     </div>
 </div>
+<script>
+    new DataTable('#users');
+</script>
 @endsection

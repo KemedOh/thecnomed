@@ -21,6 +21,13 @@ class AuthController extends Controller
      *
      * @return response()
      */
+    public function dashboard()
+    {
+        if (Auth::check()) {
+            return view('dashboard');
+        }
+        return redirect("login")->withSucces('Opps! kamu belum login');
+    }
     public function index(): View
     {
         return view('auth.login');
@@ -73,7 +80,7 @@ class AuthController extends Controller
     {
         // dd($request);
         $request->validate([
-            'fullname' => 'required',
+            'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
             'role' => 'required',
@@ -105,10 +112,10 @@ class AuthController extends Controller
     public function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'fullname' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role' => $data['role']
+            'role_id' => $data['role']
         ]);
     }
 
