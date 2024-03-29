@@ -52,12 +52,12 @@
                             <div class="col-md-6">
                                 <select class="form-select" id="product_type" name="product_type" aria-label="product_type">
                                     <option value="">Choose</option>
-                                    @foreach($product_type as $val)
-                                        <option value="{{$val->id}}" {{ ($barang->product_type_name == $val->id) ? 'selected' : '' }}>{{$val->product_types}}</option>
+                                    @foreach($product_types as $val)
+                                        <option value="{{$val->id}}" {{ ($barang->product_type_name == $val->id) ? 'selected' : '' }}>{{$val->$product_type_name}}</option>
                                     @endforeach
                                 </select>
-                                @if ($errors->has('product_types'))
-                                    <span class="text-danger">{{ $errors->first('product_types') }}</span>
+                                @if ($errors->has('product_type'))
+                                    <span class="text-danger">{{ $errors->first('product_type') }}</span>
                                 @endif
                             </div>
                             </div>

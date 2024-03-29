@@ -62,6 +62,6 @@
     </div>
 </div>
 <script>
-    new DataTable('#users');
+    new DataTable('#barangs');
 </script>
 @endsection

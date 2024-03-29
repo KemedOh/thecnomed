@@ -51,7 +51,7 @@ class BarangController extends Controller
             'product_type_id' => $data['product_type']
         ]);
 
-        return redirect("barangs.index")->withSuccess('Great! You have Successfully logged in');
+        return redirect()->route('barangs.index')->withSuccess('Great! You have Successfully loggedin');
     }
 
     /**
@@ -90,6 +90,7 @@ class BarangController extends Controller
         $product->qty = $request->qty;
         $product->selling_price = $request->selling_price;
         $product->buying_price = $request->buying_price;
+        $product->product_type_id = $request->product_type;
         $product->save();
 
         return redirect()->route('barangs.index')->withSucces('Great! You have succesfully updated' . $product->product_name);
