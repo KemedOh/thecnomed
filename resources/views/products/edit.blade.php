@@ -6,24 +6,24 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Edit Barang</div>
+                    <div class="card-header">Edit Product</div>
                     <div class="card-body">
-                        <form action="{{route('barangs.update', $barang->id)}}" method="POST">
+                        <form action="{{route('products.update', $product->id)}}" method="POST">
                             @csrf
                             @method ('PUT')
                             <div class="form-group row mt-3">
                                 <label for="product_name" class="col-md-4 col-form-label text-right">product_name</label>
                                 <div class="col-md-6">
-                                `<input type="text" id="product_name" class="form-control" name="product_name" value="{{ $barang->product_name }}" required autofocus>
+                                `<input type="text" id="product_name" class="form-control" name="product_name"  required autofocus value="{{ $product->product_name }}">
                                     @if ($errors->has('product_name'))
-                                        <span class="text-danger">{{ $errors->first('name') }}</span>
+                                        <span class="text-danger">{{ $errors->first('product_name') }}</span>
                                     @endif
                                 </div>
                             </div>
                             <div class="form-group row mt-3">
                                 <label for="qty" class="col-md-4 col-form-label text-right">Quantity</label>
                                 <div class="col-md-6">
-                                    <input type="text" id="qty" class="form-control" name="qty" value="{{ $barang->qty }}" required autofocus>
+                                    <input type="text" id="qty" class="form-control" name="qty"  required autofocus value="{{ $product->qty }}">
                                     @if ($errors->has('qty'))
                                         <span class="text-danger">{{ $errors->first('qty') }}</span>
                                     @endif
@@ -53,7 +53,7 @@
                                 <select class="form-select" id="product_type" name="product_type" aria-label="product_type">
                                     <option value="">Choose</option>
                                     @foreach($product_types as $val)
-                                        <option value="{{$val->id}}" {{ ($barang->product_type_name == $val->id) ? 'selected' : '' }}>{{$val->$product_type_name}}</option>
+                                        <option value="{{$val->id}}" {{ ($product->product_type_name == $val->id) ? 'selected' : '' }}>{{$val->product_type_name}}</option>
                                     @endforeach
                                 </select>
                                 @if ($errors->has('product_type'))

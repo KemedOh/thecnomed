@@ -71,7 +71,7 @@
                             <a class="nav-link" href="{{ route('users.index') }}">User</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('barangs.index') }}">Barang</a>
+                            <a class="nav-link" href="{{ route('products.index') }}">Barang</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}">Logout</a>

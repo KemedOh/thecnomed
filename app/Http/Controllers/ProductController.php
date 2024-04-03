@@ -8,15 +8,15 @@ use App\Models\Product_Type;
 use Illuminate\Http\Request;
 use Hash;
 
-class BarangController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $barangs = Product::all();
-        return view('barangs.index', compact('barangs'));
+        $products = Product::all();
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -25,7 +25,7 @@ class BarangController extends Controller
     public function create()
     {
         $product_type = Product_Type::all();
-        return view('barangs.create', compact('product_type'));
+        return view('products.create', compact('product_type'));
     }
 
     /**
@@ -51,7 +51,7 @@ class BarangController extends Controller
             'product_type_id' => $data['product_type']
         ]);
 
-        return redirect()->route('barangs.index')->withSuccess('Great! You have Successfully loggedin');
+        return redirect()->route('products.index')->withSuccess('Great! You have Successfully Add');
     }
 
     /**
@@ -67,9 +67,9 @@ class BarangController extends Controller
      */
     public function edit(string $id)
     {
-        $barang = Product::find($id);
+        $product = Product::find($id);
         $product_types = Product_Type::all();
-        return view('barangs.edit', compact('product_types', 'barang'));
+        return view('products.edit', compact('product_types', 'product'));
     }
 
     /**
@@ -93,7 +93,7 @@ class BarangController extends Controller
         $product->product_type_id = $request->product_type;
         $product->save();
 
-        return redirect()->route('barangs.index')->withSucces('Great! You have succesfully updated' . $product->product_name);
+        return redirect()->route('products.index')->withSuccess('Great! You have succesfully updated' . $product->product_name);
     }
 
     /**
@@ -102,6 +102,6 @@ class BarangController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('barangs.index')->withSucces('Great! You have succesfully DELETED' . $product->product_name);
+        return redirect()->route('products.index')->withSucces('Great! You have succesfully DELETED' . $product->product_name);
     }
 }

@@ -49,7 +49,7 @@ class UserController extends Controller
             'role_id' => $data['role']
         ]);
 
-        return redirect("dashboard")->withSuccess('Great! You have Successfully logged in');
+        return redirect()->route('users.index')->withSucces('Great! You have succesfully updated');
     }
 
     /**
@@ -85,7 +85,7 @@ class UserController extends Controller
 
         $user->fullname = $request->name;
         $user->email = $request->email;
-        if (!empty ($request->password))
+        if (!empty($request->password))
             $user->password = Hash::make($request->password);
         $user->role_id = $request->role;
         $user->save();

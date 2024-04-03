@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\BarangController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +27,4 @@ Route::post('post-registration', [AuthController::class, 'postRegistration'])->n
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::resource('users', UserController::class);
-Route::resource('barangs', BarangController::class);
+Route::resource('products', ProductController::class);

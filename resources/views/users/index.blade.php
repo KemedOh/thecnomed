@@ -40,7 +40,7 @@
                                         Edit
                                     </a>
                                     <form action="{{ route('users.destroy', $row->id) }}" method="POST"
-                                    style="display: inline" onsubmit="return confirm('Do you really want to delete {{ $row->name }}?');">
+                                    style="display: inline" onsubmit="return confirm('Do you really want to delete {{ $row->fullname }}?');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger"><span class="text-muted">

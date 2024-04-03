@@ -10,12 +10,12 @@
                         {{ session('success') }}
                     </div>
                 @endif
-                <div class="card-header">{{ __('Table Barang') }}</div>
+                <div class="card-header">{{ __('Table Product') }}</div>
                 <div class="card-body">
-                    <a href="{{route('barangs.create')}}" class="btn btn-sm btn-secondary">
-                        Tambah Barang
+                    <a href="{{route('products.create')}}" class="btn btn-sm btn-secondary">
+                        Tambah Product
                     </a>
-                    <table class="table table-striped" id="barangs">
+                    <table class="table table-striped" id="products">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
@@ -30,7 +30,7 @@
                         <tbody>
                             <?php $no = 0; ?>
                             
-                            @foreach($barangs as $row)
+                            @foreach($products as $row)
                             <?php    $no++ ?>
                             <tr>
                                 <th scope="row">{{ $no }}</th>
@@ -38,12 +38,12 @@
                                 <td>{{$row->qty}}</td>
                                 <td>{{$row->selling_price}}</td>
                                 <td>{{$row->buying_price}}</td>
-                                <td>{{$row->product_type->product_type_id}}</td>
+                                <td>{{$row->product_type->product_type_name}}</td>
                                 <td>
-                                    <a href="{{ route('barangs.edit', $row->id) }}" class="btn btn-sm btn-warning">
+                                    <a href="{{ route('products.edit', $row->id) }}" class="btn btn-sm btn-warning">
                                         Edit
                                     </a>
-                                    <form action="{{ route('barangs.destroy', $row->id) }}" method="POST"
+                                    <form action="{{ route('products.destroy', $row->id) }}" method="POST"
                                     style="display: inline" onsubmit="return confirm('Do you really want to delete {{ $row->product_name }}?');">
                                         @csrf
                                         @method('DELETE')
@@ -62,6 +62,6 @@
     </div>
 </div>
 <script>
-    new DataTable('#barangs');
+    new DataTable('#products');
 </script>
 @endsection

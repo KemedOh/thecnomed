@@ -6,9 +6,9 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Create Barang</div>
+                    <div class="card-header">Create Product</div>
                     <div class="card-body">
-                        <form action="{{route('barangs.store')}}" method="POST">
+                        <form action="{{route('products.store')}}" method="POST">
                             @csrf
                             <div class="form-group row mt-3">
                                 <label for="product_name" class="col-md-4 col-form-label text-right">Product Name</label>

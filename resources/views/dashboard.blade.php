@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
                 <div class="card-body">
-                    <h1>Hello, {{ auth()->user()->name }}</h1>
+                    <h1>Hello, {{ auth()->user()->fullname }}</h1>
                     @if (session('success'))
                         <div class="alert alert-success" role="alert">
                             {{ session('success') }}
