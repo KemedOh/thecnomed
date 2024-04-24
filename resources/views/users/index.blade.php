@@ -27,7 +27,6 @@
                         </thead>
                         <tbody>
                             <?php $no = 0; ?>
-                            
                             @foreach($users as $row)
                             <?php    $no++ ?>
                             <tr>
@@ -47,18 +46,25 @@
                                         Delete
                                     </span></button>
                                     </form>
-                                    
                                 </td>
                             </tr>
                             @endforeach 
                         </tbody>
                     </table>
-                        <tr>
+                    <div>
+                <tr>
                     <th colspan="3">
                         List Of Users
-                        <a class="btn btn-warning float-end" href="{{ route('user-export') }}">Export User Data</a>
+            <form action="{{ route('user-import') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="file" name="file" class="form-control">
+                <br>
+                <button class="btn btn-success">Import User Data</button>
+            </form>
+                <a class="btn btn-warning float-end" href="{{ route('user-export') }}">Export User Data</a>
                     </th>
                 </tr>
+                </div>
                 </div>
             </div>
         </div>

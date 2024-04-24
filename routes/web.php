@@ -26,7 +26,7 @@ Route::get('registration', [AuthController::class, 'registration'])->name('regis
 Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('user-export', [UserController::class, 'export'])->name('user-export');
-
+Route::post('user-import', [UserController::class, 'import'])->name('user-import');
 
 
 Route::resource('users', UserController::class);

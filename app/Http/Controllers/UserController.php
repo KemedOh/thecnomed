@@ -116,6 +116,6 @@ class UserController extends Controller
     {
         Excel::import(new UsersImport, request()->file('file'));
 
-        return back();
+        return redirect()->route('users.index')->withSucces('Great! You have succesfully imported');
     }
 }
