@@ -47,11 +47,18 @@
                                         Delete
                                     </span></button>
                                     </form>
+                                    
                                 </td>
                             </tr>
                             @endforeach 
                         </tbody>
                     </table>
+                        <tr>
+                    <th colspan="3">
+                        List Of Users
+                        <a class="btn btn-warning float-end" href="{{ route('user-export') }}">Export User Data</a>
+                    </th>
+                </tr>
                 </div>
             </div>
         </div>

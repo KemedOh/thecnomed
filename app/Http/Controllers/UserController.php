@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\User;
+use App\Exports\UsersExport;
+use App\Imports\UsersImport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use Hash;
 
@@ -100,5 +103,19 @@ class UserController extends Controller
     {
         $user->delete();
         return redirect()->route('users.index')->withSucces('Great! You have succesfully DELETED' . $user->fullname);
+    }
+    public function export()
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function import()
+    {
+        Excel::import(new UsersImport, request()->file('file'));
+
+        return back();
     }
 }

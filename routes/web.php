@@ -25,6 +25,9 @@ Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.pos
 Route::get('registration', [AuthController::class, 'registration'])->name('register');
 Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('user-export', [UserController::class, 'export'])->name('user-export');
+
+
 
 Route::resource('users', UserController::class);
 Route::resource('products', ProductController::class);
